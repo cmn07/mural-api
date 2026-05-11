@@ -1,8 +1,15 @@
 package br.ufscar.dc.dsw.mural_spring.repositories;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Message {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "mFrom")
     private String from;
+    @Column(name = "mTo")
     private String to;
     private String message;
     private String timestamp;
@@ -11,9 +18,6 @@ public class Message {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getFrom() {
         return from;

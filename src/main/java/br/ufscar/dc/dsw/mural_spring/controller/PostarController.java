@@ -50,7 +50,8 @@ public class PostarController {
         messageRepository.save(message);
 
         //model.addAttribute("sendMessageForm", new SendMessageForm());
-        return "postar";
+        redirectAttributes.addFlashAttribute("success", "Mensagem enviada com sucesso");
+        return "redirect:/mensagens";
     }
 
 }

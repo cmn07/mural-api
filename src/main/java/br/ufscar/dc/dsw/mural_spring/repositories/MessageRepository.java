@@ -13,22 +13,26 @@ public class MessageRepository {
 
     private Logger logger = LoggerFactory.getLogger(MessageRepository.class);
 
-    private List<Message> messages;
+    //private List<Message> messages; não salva mais em memória
 
-    public MessageRepository() {
-        messages = new ArrayList<>();
+    private final IMessageDAO dao;
+
+    public MessageRepository(IMessageDAO dao) {
+        this.dao = dao;
+        //messages = new ArrayList<>();
         logger.info("MessageRepository instantiated");
     }
 
     public void save(Message message) {
-        message.setId(messages.size() + 1);
+        //message.setId(messages.size() + 1);
         message.setTimestamp((new Date()).toString());
         logger.info("saving message: {}", message);
-        messages.add(message);
-        logger.info("# messages: {}", messages.size());
+        //messages.add(message);
+        dao.save(message);
+        //logger.info("# messages: {}", messages.size());
     }
 
     public List<Message> getMessages() {
-        return messages;
+        return dao.findAllOrderByIdDesc();
     }
 }
