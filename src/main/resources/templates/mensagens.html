@@ -2,31 +2,61 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Mural</title>
+    <title th:text="#{titulo.mural}"></title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<h1>Mensagens</h1>
-<ul>
-    <li><a th:href="@{/}">Home</a></li>
-    <li><a th:href="@{/postar}">Postar uma nova mensagem</a></li>
-    <li><a th:href="@{/mensagens}">Atualizar página</a></li>
-</ul>
-<br>
-<div th:if="${success}" th:text="${success}" class="success-message"></div>
-<div th:if="${#lists.isEmpty(messages)}">
-    <p>Sem mensagens.</p>
+
+<div style="position: absolute; right: 40px; top: 20px;">
+    <a th:href="@{''(lang=pt)}"><img th:src="@{/image/Brasil.gif}" alt="Português" style="width: 50px;" /></a>
+    <a th:href="@{''(lang=en)}"><img th:src="@{/image/EUA.gif}" alt="English" style="width: 50px;" /></a>
 </div>
+
+<h1 th:text="#{titulo.mensagens}"></h1>
+
+<ul>
+    <li><a th:href="@{/}" th:text="#{menu.home}"></a></li>
+
+    <li>
+        <a th:href="@{/postar}" th:text="#{menu.postarMensagem}"></a>
+    </li>
+
+    <li>
+        <a th:href="@{/mensagens}" th:text="#{menu.atualizar}"></a>
+    </li>
+</ul>
+
+<br>
+
+<div th:if="${success}" th:text="${success}" class="success-message"></div>
+
+<div th:if="${#lists.isEmpty(messages)}">
+    <p th:text="#{texto.semMensagens}"></p>
+</div>
+
 <div th:unless="${#lists.isEmpty(messages)}">
-    <h4 th:text="${'Número de mensagens: ' + messages.size()}"></h4>
+
+    <h4>
+        <span th:text="#{texto.numeroMensagens}"></span>
+        <span th:text="${messages.size()}"></span>
+    </h4>
+
     <div th:each="msg : ${messages}">
+
         <div>
-            <strong>De:</strong> <span th:text="${msg.from()}"></span>
+            <strong th:text="#{label.de}"></strong>
+            <span th:text="${msg.from()}"></span>
+
             &nbsp;
-            <strong>Para:</strong> <span th:text="${msg.to()}"></span>
+
+            <strong th:text="#{label.para}"></strong>
+            <span th:text="${msg.to()}"></span>
+
             (em <span th:text="${msg.timestamp()}"></span>)
         </div>
+
         <div th:text="${msg.message()}"></div>
+
     </div>
 </div>
 

@@ -2,15 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Mural</title>
+    <title th:text="#{titulo.mural}"></title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<h1>Mural</h1>
+
+<div style="position: absolute; right: 40px; top: 20px;">
+    <a th:href="@{''(lang=pt)}"><img th:src="@{/image/Brasil.gif}" alt="Português" style="width: 50px;" /></a>
+    <a th:href="@{''(lang=en)}"><img th:src="@{/image/EUA.gif}" alt="English" style="width: 50px;" /></a>
+</div>
+
+<h1 th:text="#{titulo.mural}"></h1>
+
 <ul>
-    <li><a th:href="@{/mensagens}">Ver Mensagens</a></li>
-    <li><a th:href="@{/postar}">Postar uma nova mensagem</a></li>
-    <li><a th:href="@{/logout}">Logout</a></li>
+    <li>
+        <a th:href="@{/mensagens}" th:text="#{menu.verMensagens}"></a>
+    </li>
+
+    <li>
+        <a th:href="@{/postar}" th:text="#{menu.postarMensagem}"></a>
+    </li>
+
+    <li>
+        <a th:href="@{/logout}" th:text="#{menu.logout}"></a>
+    </li>
 </ul>
+
 </body>
 </html>

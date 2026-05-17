@@ -3,11 +3,11 @@ package br.ufscar.dc.dsw.mural_spring.dto;
 import jakarta.validation.constraints.NotBlank;
 
 public class SendMessageForm {
-    @NotBlank
+    @NotBlank(message = "{campo.from.obrigatorio}")
     private String from;
-    @NotBlank
+    @NotBlank(message = "{campo.to.obrigatorio}")
     private String to;
-    @NotBlank
+    @NotBlank(message = "{campo.message.obrigatorio}")
     private String message;
 
     public String getFrom() {
