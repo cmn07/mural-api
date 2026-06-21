@@ -34,6 +34,7 @@ public class VerMensagensController {
         messageRepository.getMessages().forEach(m -> {
 
             listedMessages.add(new ListedMessage(
+                    m.getId(),
                     m.getFrom(),
                     m.getTo(),
                     m.getMessage(),

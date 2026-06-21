@@ -6,8 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface IMessageDAO extends CrudRepository<Message, Long> {
-    public Message save(Message message);
-    public List<Message> findAll();
+
     @Query("SELECT m FROM Message m ORDER BY m.id DESC")
-    public List<Message> findAllOrderByIdDesc();
+    List<Message> findAllOrderByIdDesc();
 }

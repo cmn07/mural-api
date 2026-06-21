@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(name = "mFrom")
     private String from;
     @Column(name = "mTo")
@@ -14,7 +14,7 @@ public class Message {
     private String message;
     private String timestamp;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
